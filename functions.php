@@ -1,4 +1,13 @@
-<?php // Exit if accessed directly
+<?php 
+function child_enqueue_styles() {
+	wp_enqueue_style( 'theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), CHILD_THEME_WSF_MOSHI_MOSHI_VERSION, 'all' );
+	wp_enqueue_script('theme-js',get_stylesheet_directory_uri() . '/main.js')
+
+}
+
+add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+
+// Exit if accessed directly
 if (!defined('ABSPATH')) exit;
 
 function register_wsf_foundation_initiatives() {
